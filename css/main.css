@@ -1,0 +1,367 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+
+/* @media screen and (max-width: 600px) {
+    th, td {
+        padding: 5px;
+        font-size: 1em;
+        text-align: left;
+    }
+    table {
+        font-size: 1em;
+    }
+} */
+
+/* main {
+    display: flex;
+    align-items:center;
+    flex-wrap: wrap;
+}*/
+
+/* aside {
+    background: #3a3e4f;
+    position: absolute;
+    padding: 10px;
+    width: 100px;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}  */
+
+
+@media (max-width: 768px) {
+    body{
+        display: grid;
+    }
+
+    .fallout76-nav {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .nav-content {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .fallout76-nav h1 {
+        margin-bottom: 10px;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .fallout76-nav ul.nav-list-ul {
+        width: 100%;
+        text-align: center; 
+    }
+
+    .fallout76-nav li.nav_li {
+        display: block;
+        margin: 10px 0; 
+    }
+
+   
+    .item-cards {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-evenly  !important; 
+        align-items: flex-start;
+        margin-top: 20px; 
+    }
+
+    .item-card {
+        background: #f0f0f0; 
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 5px !important;
+        width: auto !important; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s; 
+    }
+
+    .item-card:hover {
+        background: #e0e0e0; 
+    }
+
+    .item-card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .item-card h2 {
+        font-family: 'Montserrat', sans-serif; 
+        font-size: 1.2em !important;
+        margin: 10px 0;
+    }
+
+    .item-card p {
+        font-family: 'Montserrat', sans-serif; 
+        display: none;
+        font-size: 1em;
+        margin: 0;
+    }
+}
+
+
+
+.fallout76-nav {
+    background: #808080;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; 
+    border-bottom: 2px solid rgb(94, 114, 127);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+}
+
+.fallout76-nav h1 {
+    color: #ffffff;
+    font-size: 1.3em;
+    margin: 0;
+    margin-right: 20px;
+    font-weight: 400
+}
+
+.fallout76-nav ul.nav-list-ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.fallout76-nav li.nav_li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.fallout76-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2em;
+    
+    transition: color 0.3s;
+}
+
+.fallout76-nav a:hover {
+    color: #ffcc00;
+}
+
+.separator {
+    width: 2px; 
+    height: 24px; 
+    background-color: #ffffff; 
+    margin: 0 20px; 
+}
+
+
+
+.context-menu {
+    position: absolute;
+    list-style: none;
+    background: #808080; 
+    padding: 10px;
+    
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    display: none; 
+    z-index: 1; 
+    top: calc(100% + 5px); 
+    left: 10%; 
+    transform: translateX(-50%); 
+    cursor: pointer;
+}
+
+.context-menu li {
+    margin: 10px 0;
+    cursor: pointer; 
+    transition: color 0.3s; 
+}
+
+.context-menu li:hover {
+    color: #ffcc00; 
+}
+
+
+.user-menu .context-menu {
+    display: block;
+}
+
+
+.context-menu a:active {
+    color: #ff9900; 
+}
+
+
+.user-menu {
+    position: relative; 
+}
+
+.user-menu img {
+    width: 32px; 
+    height: 32px;
+    margin-right: 15px; 
+    cursor: pointer; 
+}
+
+.context-menu {
+    position: absolute;
+    list-style: none;
+    background: #333; 
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    display: none; 
+    z-index: 1; 
+    top: calc(100% + 5px); 
+    left: 50%; 
+    transform: translateX(-50%); 
+    cursor: default; 
+}
+
+.fallout76-nav a:active {
+    color: #ff9900; 
+}
+
+.nav_li.active {
+    text-decoration: underline white; 
+    text-underline-offset: 2px; 
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.8); 
+    font-weight: bold; 
+}
+
+
+.item-cards {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-evenly; 
+    align-items: center;
+    margin-top: 20px; 
+}
+
+/* .item-cards > :last-child {
+    margin-right: auto !important;
+} */
+
+.item-card {
+    background: #f0f0f0; 
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 20%; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.item-card:hover {
+    background: #e0e0e0; 
+}
+
+.item-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.item-card h2 {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.item-card p {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1em;
+    margin: 0;
+}
+
+
+.footer {
+    background: #808080; 
+    color: #fff; 
+    text-align: center;
+    padding: 20px 0;
+    border-top: 2px solid #3498db; 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1em; 
+}
+
+.footer p {
+    margin: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #ffcc00; 
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.social-links li {
+    margin-right: 10px;
+}
+
+.audit-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.header {
+    background: #f2f2f2;
+    font-weight: bold;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 1em;
+    color: #333;
+    background: #fff;
+}
+
+tr:nth-child(even) td {
+    background: #f5f5f5; 
+}
+
+tr:nth-child(odd) td {
+    background: #fff; 
+}
+
+tr:hover td {
+    background: #e0e0e0;
+    transition: background 0.3s;
+}
+
+
+.ascii-art {
+    line-height: 1.5; 
+}
