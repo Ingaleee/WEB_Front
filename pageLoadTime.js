@@ -9,4 +9,4 @@ document.addEventListener('DOMContentLoaded', function () {
     var loadTimeElement = document.createElement('p');
     loadTimeElement.textContent = 'Время загрузки страницы: ' + loadTimeInSeconds + ' секунд.';
     footer.appendChild(loadTimeElement);
-});
+}); 

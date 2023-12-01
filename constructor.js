@@ -1,43 +1,43 @@
-function generateTable() {
-    const weekdays = Array.from(document.getElementById('weekdays').selectedOptions).map(option => option.value);
-    const language = document.getElementById('language').value;
+window.addEventListener("load", function() {
+    const tableTemplate = document.getElementById('table-template');
 
-    let tableHTML = `<table>
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    ${weekdays.map(day => `<th>${day}</th>`).join('')}
-                                </tr>
-                            </thead>
-                            <tbody>`;
+    function generateTable(item) {
+        const weekdays = Array.from(document.getElementById('weekdays').selectedOptions).map(option => option.value);
     
-    const items = ["Nuka-Cola", "RadAway", "Stimpak", "Power Armor", "Caps", "Gauss Rifle", "Vault Suit", "Fusion Core"];
-
-    for (const item of items) {
-        tableHTML += `<tr>
-                        <td>${item}</td>`;
-        for (const day of weekdays) {
-            const randomAmount = Math.floor(Math.random() * 10) + 1;
-            tableHTML += `<td>${randomAmount}</td>`;
+        const tableContainer = document.getElementById('tableContainer');
+    
+        tableContainer.innerHTML = '';
+    
+        const tableClone = document.importNode(tableTemplate.content, true);
+        const tableHead = tableClone.querySelector('thead tr');
+        const tableBody = tableClone.querySelector('tbody');
+    
+        tableHead.innerHTML = `<th>Item</th>${weekdays.map(day => `<th>${day}</th>`).join('')}`;
+    
+        let items = JSON.parse(localStorage.getItem("items")) || [];
+    
+        if (item) {
+            items.push(item);
         }
-        tableHTML += `</tr>`;
+    
+        for (current of items) {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${current}</td>`;
+    
+            tableBody.appendChild(row);
+        }
+    
+        tableContainer.appendChild(tableClone);
+    
+        localStorage.setItem("items", JSON.stringify(items));
     }
 
-    tableHTML += `</tbody>
-                    </table>`;
+    generateTable();
 
-    document.getElementById('tableContainer').innerHTML = tableHTML;
-}
-
-const savedConfig = localStorage.getItem('tableConfig');
-
-if (savedConfig) {
-    const { weekdays, language } = JSON.parse(savedConfig);
-    document.getElementById('weekdays').value = weekdays;
-    document.getElementById('language').value = language;
-}
-
-document.getElementById('tableForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    generateTable(); 
+    document.getElementById('tableForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const item = document.getElementById('item').value;
+        generateTable(item);
+    });
 });
+

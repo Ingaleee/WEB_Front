@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/users.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <script src="stats.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <title>Users</title>
+  </head>
+  <body>
+    <header class="fallout76-nav">
+      <div class="nav-content">
+        <h1>Fallout 76 Fun</h1>
+        <div class="separator"></div>
+        <ul class="nav-list-ul">
+          <li class="nav_li" id="home"><a href="home.html">Home</a></li>
+          <li class="nav_li" id="marketplace">
+            <a href="marketplace.html">Marketplace</a>
+          </li>
+          <li class="nav_li" id="blog">
+            <a href="constructor.html">Constructor</a>
+          </li>
+          <li class="nav_li" id="users">
+            <a href="users.html">Users</a>
+          </li>
+        </ul>
+      </div>
+      <div class="user-menu">
+        <img src="img/user.png" />
+        <ul class="context-menu">
+          <li><a href="#">Профиль</a></li>
+          <li><a href="#">Настройки</a></li>
+          <li><a href="#">Выход</a></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div id="loader">
+        <img src="img/loading.gif" alt="Loading" />
+      </div>
+
+      <div class="swiper-container">
+        <div class="swiper-wrapper" id="swiper-wrapper"></div>
+ 
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+
+
+    </main>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="get-users-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
