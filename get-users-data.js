@@ -9,22 +9,15 @@ document.addEventListener('DOMContentLoaded', function () {
         loader.style.display = 'block';
         errorContainer.style.display = 'none';
 
-        const filterParam = requestCount % 2 === 0 ? 'id_gte=100' : 'id_lte=200';
+        const filterParam = `id_in=${userIds.join(',')}`;
 
-        const promises = userIds.map(userId =>
-            fetch(`https://jsonplaceholder.typicode.com/users/${userId}?${filterParam}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Network response was not ok: ${response.status}`);
-                    }
-                    return response.json();
-                }).catch(error => {
-                    console.error(`⚠ Something went wrong: ${error.message}`);
-                    showError(error.message);
-                }) 
-        );
-
-        Promise.all(promises)
+        fetch(`https://jsonplaceholder.typicode.com/users?${filterParam}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(usersData => {
                 renderUsers(usersData);
                 initSwiper();
@@ -44,16 +37,18 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchData(randomUserIds);
 
     function renderUsers(users) {
+        const userCardTemplate = document.getElementById('user-card-template');
+    
         users.forEach(user => {
-            const userCard = document.createElement('div');
-            userCard.classList.add('swiper-slide');
-            userCard.innerHTML = `
-                <img src="https://via.placeholder.com/150" alt="${user.name}">
-                <h3>${user.name}</h3>
-                <p>Email: ${user.email}</p>
-                <p>Phone: ${user.phone}</p>
-                <p>Website: ${user.website}</p>
-            `;
+            const userCard = document.importNode(userCardTemplate.content, true);
+            const userCardElement = userCard.querySelector('.swiper-slide');
+    
+            userCardElement.querySelector('img').setAttribute('alt', user.name);
+            userCardElement.querySelector('h3').textContent = user.name;
+            userCardElement.querySelector('.email').textContent = `Email: ${user.email}`;
+            userCardElement.querySelector('.phone').textContent = `Phone: ${user.phone}`;
+            userCardElement.querySelector('.website').textContent = `Website: ${user.website}`;
+    
             swiperWrapper.appendChild(userCard);
         });
     }
@@ -77,4 +72,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-
